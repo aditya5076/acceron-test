@@ -37,7 +37,7 @@ class EmployeeController extends Controller
     public function import(Request $request)
     {
         $fields = Validator::make($request->all(), [
-            'sheet' => 'required'
+            'sheet' => 'required|mimes:xlsx'
         ]);
 
         if ($fields->fails()) return response()->json(['error' => $fields->errors()], 422);
